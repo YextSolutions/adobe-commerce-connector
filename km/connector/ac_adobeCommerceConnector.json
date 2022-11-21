@@ -9,7 +9,7 @@
         "source": "adobe-commerce",
         "operation": "fetchProducts",
         "inputs": {
-          "apiAccessToken": "${{apiAccessToken}},
+          "apiAccessToken": "${{apiAccessToken}}",
           "baseUrl": "${{configurationBaseURL}}"
         }
       }
