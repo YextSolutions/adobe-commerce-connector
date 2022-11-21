@@ -1,0 +1,116 @@
+{
+  "$id": "adobeCommerceConnector",
+  "$schema": "https://schema.yext.com/config/km/connector/v3",
+  "displayName": "Adobe Commerce Connector",
+  "entityType": "product",
+  "source": {
+    "sourceConfig": {
+      "nativeSourceConfig": {
+        "source": "adobe-commerce",
+        "operation": "fetchProducts",
+        "inputs": {
+          "apiAccessToken": "${{km/connector.adobeCommerceConnector.apiAccessToken}}",
+          "baseUrl": "leupold-24.binaryanvil.work"
+        }
+      }
+    },
+    "selectors": [
+      {
+        "type": "JSON",
+        "header": "ID",
+        "path": "id"
+      },
+      {
+        "type": "JSON",
+        "header": "SKU",
+        "path": "sku"
+      },
+      {
+        "type": "JSON",
+        "header": "Name",
+        "path": "name"
+      },
+      {
+        "type": "JSON",
+        "header": "Price",
+        "path": "price"
+      },
+      {
+        "type": "JSON",
+        "header": "Image Slug",
+        "path": "media_gallery_entries[].file"
+      }
+    ]
+  },
+  "transforms": [
+    {
+      "addColumn": {
+        "newColumnHeader": "Currency",
+        "columnValue": "USD"
+      }
+    },
+    {
+      "addColumn": {
+        "newColumnHeader": "Public-facing URL",
+        "columnValue": "tempValue"
+      }
+    },
+    {
+      "mergeColumns": {
+        "inputHeaders": [
+          "Public-facing URL",
+          "Image Slug"
+        ],
+        "newColumnHeader": "Image URL",
+        "delimiter": ""
+      }
+    }
+  ],
+  "mappings": [
+    {
+      "field": "entityId",
+      "header": "ID",
+      "subfieldPath": []
+    },
+    {
+      "field": "sku",
+      "header": "SKU",
+      "subfieldPath": []
+    },
+    {
+      "field": "name",
+      "header": "Name",
+      "subfieldPath": []
+    },
+    {
+      "field": "price",
+      "header": "Price",
+      "subfieldPath": [
+        {
+          "name": "value"
+        }
+      ]
+    },
+    {
+      "field": "price",
+      "header": "Currency",
+      "subfieldPath": [
+        {
+          "name": "currencyCode"
+        }
+      ]
+    },
+    {
+      "field": "photoGallery",
+      "header": "Image URL",
+      "subfieldPath": [
+        {
+          "name": "image"
+        },
+        {
+          "name": "url"
+        }
+      ]
+    }
+  ]
+}
