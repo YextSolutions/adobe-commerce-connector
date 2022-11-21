@@ -1,5 +1,5 @@
 {
-  "$id": "adobeCommerceConnector",
+  "$id": "ac_adobeCommerceConnector",
   "$schema": "https://schema.yext.com/config/km/connector/v3",
   "displayName": "Adobe Commerce Connector",
   "entityType": "product",
@@ -9,8 +9,8 @@
         "source": "adobe-commerce",
         "operation": "fetchProducts",
         "inputs": {
-          "apiAccessToken": "${{km/connector.adobeCommerceConnector.apiAccessToken}}",
-          "baseUrl": "leupold-24.binaryanvil.work"
+          "apiAccessToken": "${{apiAccessToken}},
+          "baseUrl": "${{configurationBaseURL}}"
         }
       }
     },
@@ -52,7 +52,7 @@
     {
       "addColumn": {
         "newColumnHeader": "Public-facing URL",
-        "columnValue": "tempValue"
+        "columnValue": "${{publicDomainURL}}"
       }
     },
     {
