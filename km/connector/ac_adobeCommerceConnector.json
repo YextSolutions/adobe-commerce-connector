@@ -99,18 +99,6 @@
           "name": "currencyCode"
         }
       ]
-    },
-    {
-      "field": "photoGallery",
-      "header": "Image URL",
-      "subfieldPath": [
-        {
-          "name": "image"
-        },
-        {
-          "name": "url"
-        }
-      ]
     }
   ]
 }
