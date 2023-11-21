@@ -1,8 +1,8 @@
 {
   "$id": "ac_adobeCommerceConnector",
-  "$schema": "https://schema.yext.com/config/km/connector/v3",
+  "$schema": "https://schema.yext.com/config/km/connector/v4",
   "displayName": "Adobe Commerce Connector",
-  "entityType": "product",
+  "entityTypes": ["product"],
   "source": {
     "sourceConfig": {
       "nativeSourceConfig": {
@@ -100,5 +100,9 @@
         }
       ]
     }
-  ]
+  ],
+  "comprehensiveModeConfig": {
+    "comprehensiveSet": "ENTITIES_CREATED_BY_THIS_CONNECTOR",
+    "actionOnMissingEntities": "DELETE"
+  }
 }
